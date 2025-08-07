@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Moya
 
 @main
 struct MemoryApp: App {

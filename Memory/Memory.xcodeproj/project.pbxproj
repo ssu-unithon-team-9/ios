@@ -6,13 +6,33 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		09E3284F2E448A3300FECA96 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 09E3284E2E448A3300FECA96 /* CombineMoya */; };
+		09E328512E448A3300FECA96 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 09E328502E448A3300FECA96 /* Moya */; };
+		09E328582E44AC5D00FECA96 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 09E328572E44AC5D00FECA96 /* Config.xcconfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		09E3283A2E4484C800FECA96 /* Memory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09E328572E44AC5D00FECA96 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		09E328602E44AEEA00FECA96 /* Exceptions for "Memory" folder in "Memory" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 09E328392E4484C800FECA96 /* Memory */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		09E3283C2E4484C800FECA96 /* Memory */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				09E328602E44AEEA00FECA96 /* Exceptions for "Memory" folder in "Memory" target */,
+			);
 			path = Memory;
 			sourceTree = "<group>";
 		};
@@ -23,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E328512E448A3300FECA96 /* Moya in Frameworks */,
+				09E3284F2E448A3300FECA96 /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +54,7 @@
 		09E328312E4484C800FECA96 = {
 			isa = PBXGroup;
 			children = (
+				09E328572E44AC5D00FECA96 /* Config.xcconfig */,
 				09E3283C2E4484C800FECA96 /* Memory */,
 				09E3283B2E4484C800FECA96 /* Products */,
 			);
@@ -65,6 +88,8 @@
 			);
 			name = Memory;
 			packageProductDependencies = (
+				09E3284E2E448A3300FECA96 /* CombineMoya */,
+				09E328502E448A3300FECA96 /* Moya */,
 			);
 			productName = Memory;
 			productReference = 09E3283A2E4484C800FECA96 /* Memory.app */;
@@ -94,6 +119,9 @@
 			);
 			mainGroup = 09E328312E4484C800FECA96;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				09E3284D2E448A3300FECA96 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 09E3283B2E4484C800FECA96 /* Products */;
 			projectDirPath = "";
@@ -109,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E328582E44AC5D00FECA96 /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +285,7 @@
 				DEVELOPMENT_TEAM = 347X4G24BF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Memory/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +314,7 @@
 				DEVELOPMENT_TEAM = 347X4G24BF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Memory/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +355,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		09E3284D2E448A3300FECA96 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		09E3284E2E448A3300FECA96 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09E3284D2E448A3300FECA96 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		09E328502E448A3300FECA96 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09E3284D2E448A3300FECA96 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 09E328322E4484C800FECA96 /* Project object */;
 }
