@@ -5,12 +5,17 @@
 //  Created by 황채웅 on 8/7/25.
 //
 
-import ElevenlabsSwift
 import AVFoundation
 import Combine
 
 final class TTSManager {
-    private var audioPlayer: AVAudioPlayer?
+    private var audioPlayer: AVAudioPlayer
+    
+    static let shared = TTSManager()
+    
+    init() {
+        self.audioPlayer = AVAudioPlayer()
+    }
     
     enum Voice {
         case ChungMan
@@ -55,6 +60,7 @@ final class TTSManager {
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
 
         let (data, response) = try await URLSession.shared.data(for: request)
+        dump(response)
 
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw URLError(.badServerResponse)
@@ -62,7 +68,7 @@ final class TTSManager {
 
         // 오디오 재생
         audioPlayer = try AVAudioPlayer(data: data)
-        audioPlayer?.prepareToPlay()
-        audioPlayer?.play()
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
     }
 }

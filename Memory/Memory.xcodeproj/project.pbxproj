@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090F9AE22E45C71F008452CB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 090F9AE12E45C71F008452CB /* Kingfisher */; };
 		09E3284F2E448A3300FECA96 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 09E3284E2E448A3300FECA96 /* CombineMoya */; };
 		09E328512E448A3300FECA96 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 09E328502E448A3300FECA96 /* Moya */; };
 		09E328582E44AC5D00FECA96 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 09E328572E44AC5D00FECA96 /* Config.xcconfig */; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090F9AE22E45C71F008452CB /* Kingfisher in Frameworks */,
 				09E328512E448A3300FECA96 /* Moya in Frameworks */,
 				09E3284F2E448A3300FECA96 /* CombineMoya in Frameworks */,
 			);
@@ -90,6 +92,7 @@
 			packageProductDependencies = (
 				09E3284E2E448A3300FECA96 /* CombineMoya */,
 				09E328502E448A3300FECA96 /* Moya */,
+				090F9AE12E45C71F008452CB /* Kingfisher */,
 			);
 			productName = Memory;
 			productReference = 09E3283A2E4484C800FECA96 /* Memory.app */;
@@ -121,6 +124,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				09E3284D2E448A3300FECA96 /* XCRemoteSwiftPackageReference "Moya" */,
+				090F9AE02E45C71F008452CB /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 09E3283B2E4484C800FECA96 /* Products */;
@@ -156,6 +160,7 @@
 /* Begin XCBuildConfiguration section */
 		09E328432E4484C800FECA96 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09E328572E44AC5D00FECA96 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -220,6 +225,7 @@
 		};
 		09E328442E4484C800FECA96 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09E328572E44AC5D00FECA96 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -277,6 +283,7 @@
 		};
 		09E328462E4484C800FECA96 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09E328572E44AC5D00FECA96 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +313,7 @@
 		};
 		09E328472E4484C800FECA96 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09E328572E44AC5D00FECA96 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -357,6 +365,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		090F9AE02E45C71F008452CB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
 		09E3284D2E448A3300FECA96 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -368,6 +384,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		090F9AE12E45C71F008452CB /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 090F9AE02E45C71F008452CB /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		09E3284E2E448A3300FECA96 /* CombineMoya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 09E3284D2E448A3300FECA96 /* XCRemoteSwiftPackageReference "Moya" */;

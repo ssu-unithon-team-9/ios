@@ -12,7 +12,8 @@ import Moya
 struct MemoryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MemoryGameView()
+            TextColorQuizView(viewModel: TextColorQuizViewModel(useCase: GenerateTextColorQuizUseCase()))
         }
     }
 }
