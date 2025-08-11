@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Pretendard-Thin</string>
+		<string>Pretendard-SemiBold</string>
+		<string>Pretendard-Regular</string>
+		<string>Pretendard-Medium</string>
+		<string>Pretendard-Light</string>
+		<string>Pretendard-ExtraLight</string>
+		<string>Pretendard-ExtraBold</string>
+		<string>Pretendard-Bold</string>
+		<string>Pretendard-Black</string>
+	</array>
 	<key>NSMicrophoneInjectionUsageDescription</key>
 	<string>사용자 음성 인식을 위해 마이크 사용 권한을 허용해주세요.</string>
 	<key>ELEVENLABS_API_KEY</key>
