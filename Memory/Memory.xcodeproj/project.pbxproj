@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090F34882E4B5D3D0006DC42 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 090F34872E4B5D3D0006DC42 /* MarkdownUI */; };
 		090F9AE22E45C71F008452CB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 090F9AE12E45C71F008452CB /* Kingfisher */; };
 		09E3284F2E448A3300FECA96 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 09E3284E2E448A3300FECA96 /* CombineMoya */; };
 		09E328512E448A3300FECA96 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 09E328502E448A3300FECA96 /* Moya */; };
@@ -47,6 +48,7 @@
 				090F9AE22E45C71F008452CB /* Kingfisher in Frameworks */,
 				09E328512E448A3300FECA96 /* Moya in Frameworks */,
 				09E3284F2E448A3300FECA96 /* CombineMoya in Frameworks */,
+				090F34882E4B5D3D0006DC42 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +95,7 @@
 				09E3284E2E448A3300FECA96 /* CombineMoya */,
 				09E328502E448A3300FECA96 /* Moya */,
 				090F9AE12E45C71F008452CB /* Kingfisher */,
+				090F34872E4B5D3D0006DC42 /* MarkdownUI */,
 			);
 			productName = Memory;
 			productReference = 09E3283A2E4484C800FECA96 /* Memory.app */;
@@ -125,6 +128,7 @@
 			packageReferences = (
 				09E3284D2E448A3300FECA96 /* XCRemoteSwiftPackageReference "Moya" */,
 				090F9AE02E45C71F008452CB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				090F34862E4B5D3D0006DC42 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 09E3283B2E4484C800FECA96 /* Products */;
@@ -287,9 +291,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 347X4G24BF;
+				DEVELOPMENT_TEAM = N43T2G387M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memory/Info.plist;
@@ -298,6 +303,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +311,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.unithon-team-9.app.Memory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -317,9 +324,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 347X4G24BF;
+				DEVELOPMENT_TEAM = N43T2G387M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memory/Info.plist;
@@ -328,6 +336,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,6 +344,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.unithon-team-9.app.Memory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -365,6 +375,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		090F34862E4B5D3D0006DC42 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
 		090F9AE02E45C71F008452CB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -384,6 +402,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		090F34872E4B5D3D0006DC42 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 090F34862E4B5D3D0006DC42 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
 		090F9AE12E45C71F008452CB /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 090F9AE02E45C71F008452CB /* XCRemoteSwiftPackageReference "Kingfisher" */;

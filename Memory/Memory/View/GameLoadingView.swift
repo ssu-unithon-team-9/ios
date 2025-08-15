@@ -12,82 +12,67 @@ struct GameLoadingView: View {
     let mainColor: Color
     let categoryTitle: String
     let title: String
-    let timerSeconds: Int
+    let timerSeconds: Double
+    let destinationViewString: String
     @State private var progress: CGFloat = 0.0
-    
-    init(mainColor: Color, categoryTitle: String, title: String, timerSeconds: Int) {
-        self.mainColor = mainColor
-        self.categoryTitle = categoryTitle
-        self.title = title
-        self.timerSeconds = timerSeconds
-        Fonts.registerCustomFonts()
-    }
-    
+    @Binding var navigationPath: NavigationPath
+        
     var body: some View {
-        VStack(alignment: .center) {
-            Spacer(minLength: 0)
-            VStack(alignment: .leading) {
-                Text(categoryTitle)
-                    .font(.headline4)
-                    .foregroundStyle(.black)
-                    .frame(width: 90, height: 44)
-                    .background(mainColor)
-                    .cornerRadius(22)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 22)
-                            .stroke(Color.black, lineWidth: 1)
-                            .padding(1)
+        GeometryReader { geo in
+            VStack(alignment: .center) {
+                ZStack {
+                    Rectangle()
+                        .foregroundStyle(.black)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 24)
+                        .cornerRadius(12)
+                        .padding(.bottom, 24)
+                    Rectangle()
+                        .foregroundStyle(mainColor)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 24)
+                        .cornerRadius(12)
+                        .padding(.trailing, geo.size.width*(1-progress))
+                        .padding(.bottom, 24)
+                }
+                Spacer(minLength: 0)
+                VStack(alignment: .leading) {
+                    Text(categoryTitle)
+                        .font(.headline4)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 12)
+                        .frame(height: 44)
+                        .background(mainColor)
+                        .cornerRadius(22)
+                        .padding(.bottom, 12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(title)
+                        .font(.headline1)
+                        .foregroundStyle(.black)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.bottom, 300)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onAppear {
+                    let timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
+                        if progress < 1.0 {
+                            progress += 0.001 / CGFloat(timerSeconds)
+                        } else {
+                            progress = 1.0
+                            self.navigationPath.removeLast(1)
+                            self.navigationPath.append(destinationViewString)
+                        }
                     }
-                    .padding(.bottom, 12)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text(title)
-                    .font(.headline1)
-                    .foregroundStyle(.black)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    // Invalidate timer after timerSeconds
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(timerSeconds)) {
+                        timer.invalidate()
+                    }
+                }
+                Spacer(minLength: 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            Spacer(minLength: 0)
-            ZStack {
-                Rectangle()
-                    .foregroundStyle(.black)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 24)
-                    .cornerRadius(12)
-                    .padding(.bottom, 24)
-                Rectangle()
-                    .foregroundStyle(.orange)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 24)
-                    .cornerRadius(12)
-                    .padding(.trailing, (1.0 - progress) * UIScreen.main.bounds.width * 0.8)
-                    .padding(.bottom, 24)
-            }
-            .onAppear {
-                let timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
-                    if progress < 1.0 {
-                        progress += 0.001 / CGFloat(timerSeconds)
-                    } else {
-                        progress = 1.0
-                    }
-                }
-                // Invalidate timer after timerSeconds
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(timerSeconds)) {
-                    timer.invalidate()
-                }
-            }
-            
-            
+            .padding(.horizontal, 28)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, 28)
     }
-}
-#Preview {
-    GameLoadingView(
-        mainColor: .orange,
-        categoryTitle: "기억력",
-        title: "카드를 보고\n그림을 기억해\n뒤집힌 카드를\n짝지어 주세요",
-        timerSeconds: 10
-    )
 }

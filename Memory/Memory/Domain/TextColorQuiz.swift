@@ -13,7 +13,7 @@ final class TextColorQuiz: Equatable, Identifiable {
         lhs.correctColor == rhs.correctColor
     }
     
-    let description: String = "실제 색깔을 골라주세요"
+    let description: String = "글자의 내용이 아닌,\n글자의 색깔을 맞혀주세요"
     let incorrectColor: Color // 빨강(텍스트가 나타내는 오답)
     let incorrectColorString: String // 빨강(오답 색 텍스트)
     let correctColor: String // 파란색(UI색, 정답)

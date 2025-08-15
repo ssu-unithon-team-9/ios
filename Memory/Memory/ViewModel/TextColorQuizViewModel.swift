@@ -8,10 +8,19 @@
 import Foundation
 import SwiftUI
 
-class TextColorQuizViewModel: ViewModelable {
+class TextColorQuizViewModel: ObservableObject {
     // MARK: - Properties
     @Published private(set) var state: TextColorQuizState
+    @Published var timeRemaining: Double = 15.0  // 남은 시간 (초 단위)
+    @Published var isGameOver: Bool = false  // 게임 종료 상태
+    @Published var correctCount: Int = 0  // 맞춘 문제 수 (누적)
+    
     private let useCase: GenerateTextColorQuizUseCase
+    private var timer: Timer?
+    private let gameDuration: Double = 15.0  // 게임 제한 시간 (초)
+    
+    var navigationPath: Binding<NavigationPath>
+    private let userId: Int
     
     // 뷰모델 상태 정의
     struct TextColorQuizState {
@@ -42,8 +51,11 @@ class TextColorQuizViewModel: ViewModelable {
     ]
     
     // MARK: - Initialization
-    init(useCase: GenerateTextColorQuizUseCase = GenerateTextColorQuizUseCase()) {
+    init(useCase: GenerateTextColorQuizUseCase = GenerateTextColorQuizUseCase(),
+         navigationPath: Binding<NavigationPath>, userId: Int) {
+        self.userId = userId
         self.useCase = useCase
+        self.navigationPath = navigationPath
         let initialQuiz = useCase.execute()
         self.state = TextColorQuizState(
             quiz: initialQuiz,
@@ -52,10 +64,12 @@ class TextColorQuizViewModel: ViewModelable {
             showFeedback: false
         )
         self.state.buttonColors = generateButtonColors(for: initialQuiz)
+        startTimer()  // 초기화 시 타이머 시작
     }
     
     // MARK: - ViewModelable
     func action(_ action: TextColorQuizAction) {
+        guard !isGameOver else { return }
         switch action {
         case .selectColor(let colorName):
             handleColorSelection(colorName)
@@ -76,6 +90,9 @@ class TextColorQuizViewModel: ViewModelable {
     
     private func handleColorSelection(_ colorName: String) {
         let isCorrect = colorName == state.quiz.correctColor
+        if isCorrect {
+            correctCount += 1
+        }
         state = TextColorQuizState(
             quiz: state.quiz,
             buttonColors: state.buttonColors,
@@ -92,5 +109,35 @@ class TextColorQuizViewModel: ViewModelable {
             isCorrect: nil,
             showFeedback: false
         )
+    }
+    
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
+            if self.timeRemaining > 0 {
+                self.timeRemaining -= 0.001
+            } else {
+                self.stopTimer()
+                self.endGame()
+            }
+        }
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    private func endGame() {
+        isGameOver = true
+        print("게임 종료! 맞춘 문제 수: \(correctCount)")
+        navigationPath.wrappedValue.removeLast(1)
+        NetworkManager.shared.post(.saveGame(
+            userId: userId,
+            type: "ATTENTION",
+            count: correctCount > 20 ? 20 : correctCount,
+            totalCount: 20
+        )) { (result: Result<String, Error>) in
+            print("서버에 업로드 완료")
+        }
     }
 }

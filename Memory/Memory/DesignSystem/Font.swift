@@ -20,6 +20,12 @@ public enum AlloFontStyle {
     case headline3
     case headline4
     
+    case big48
+    case big44
+    case big40
+    case big36
+    case big32
+    
     case subtitle1
     case subtitle2
     case subtitle3
@@ -66,13 +72,33 @@ public enum AlloFontStyle {
                 .caption2,
                 .caption3:
             return "Pretendard-Regular"
+        case .big48:
+            return "Pretendard-Bold"
+        case .big44:
+            return "Pretendard-Bold"
+        case .big40:
+            return "Pretendard-SemiBold"
+        case .big36:
+            return "Pretendard-Medium"
+        case .big32:
+            return "Pretendard-Regular"
         }
     }
     
     var size: CGFloat {
         switch self {
+        case .big32:
+            return 32
+        case .big36:
+            return 36
+        case .big40:
+            return 40
+        case .big44:
+            return 44
+        case .big48:
+            return 48
         case .headline1:
-            return 54
+            return 76
         case
                 .headline2,
                 .subtitle4:
@@ -127,6 +153,16 @@ public enum AlloFontStyle {
                 .button2, .button3,
                 .caption1, .caption2, .caption3:
             return 20
+        case .big32:
+            return 32
+        case .big36:
+            return 36
+        case .big40:
+            return 40
+        case .big44:
+            return 44
+        case .big48:
+            return 48
         }
     }
     
@@ -142,6 +178,8 @@ public enum AlloFontStyle {
                 .button1, .button2, .button3,
                 .caption1, .caption2, .caption3:
             return 0
+        case .big48, .big44, .big40, .big36, .big32:
+            return -(size * 0.02)
         }
     }
     var font: Font {
@@ -176,6 +214,12 @@ extension Font {
     static let caption1 = AlloFontStyle.caption1.font
     static let caption2 = AlloFontStyle.caption2.font
     static let caption3 = AlloFontStyle.caption3.font
+    
+    static let big32 = AlloFontStyle.big32
+    static let big36 = AlloFontStyle.big36
+    static let big40 = AlloFontStyle.big40
+    static let big44 = AlloFontStyle.big44
+    static let big48 = AlloFontStyle.big48
 }
 
 extension View {
